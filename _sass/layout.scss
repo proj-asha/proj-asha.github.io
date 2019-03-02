@@ -1,0 +1,35 @@
+html, body {
+    margin: 0;
+}
+
+.wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+
+    &>header, &>footer {
+        flex: 0 0 auto;
+        text-align: center;
+    }
+
+    &>section {
+        flex: 1 0 auto;
+        padding: 0 1em;
+    }
+}
+
+.mermaid {
+    margin: 1em 0;
+    padding: 0.5em;
+    &[title]::before {
+        content: attr(title);
+        display: block;
+        padding: 0.5em 1em;
+        font-size: 0.8em;
+        margin: -0.625em -0.625em 0.625em -0.625em;
+    }
+    svg {
+        text-align: center;
+    }
+}

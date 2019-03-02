@@ -1,0 +1,19 @@
+title: "明日葉の自由帳"
+plugins:
+  - jekyll-feed
+markdown: kramdown
+
+collections:
+  experiments:
+    output: true
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+  - scope:
+      path: ""
+      type: "experiments"
+    values:
+      layout: experiment

@@ -1,0 +1,20 @@
+---
+title: 実験記録
+---
+
+{% assign date_format = site.date_format | default: "%b %-d, %Y" %}
+
+<ul>
+{% for experiment in site.experiments %}
+<li>
+    <a href="{{ experiment.url }}">{{ experiment.title }}</a>
+    [{{ experiment.date | date: date_format }}]
+    {% for category in experiment.categories %}
+        <span class="badge category">{{ category }}</span>
+    {% endfor %}
+    {% for tag in experiment.tags %}
+        <span class="badge tag">{{ tag }}</span>
+    {% endfor %}
+</li>
+{% endfor %}
+</ul>
