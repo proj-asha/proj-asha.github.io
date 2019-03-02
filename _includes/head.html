@@ -10,14 +10,31 @@
                 const e = elements[i];
                 const pre = e.parentElement;
                 const replace = function(graph) {
-                    const elem = document.createElement('div');
-                    elem.innerHTML = graph;
-                    elem.className = 'mermaid';
-                    elem.setAttribute('data-processed', 'true');
-                    if (pre.getAttribute('title')) {
-                        elem.setAttribute('title', pre.getAttribute('title'));
+                    if (pre.getAttribute('data-style') == 'details') {
+                        const details = document.createElement('details');
+                        details.className = 'mermaid';
+                        details.setAttribute('data-processed', 'true');
+
+                        if (pre.getAttribute('title')) {
+                            const summary = document.createElement('summary');
+                            summary.textContent = pre.getAttribute('title');
+                            details.appendChild(summary)
+                        }
+
+                        const elem = document.createElement('div');
+                        elem.innerHTML = graph;
+                        details.appendChild(elem);
+                        pre.parentElement.replaceChild(details, pre);
+                    }else{
+                        const elem = document.createElement('div');
+                        elem.innerHTML = graph;
+                        elem.className = 'mermaid';
+                        elem.setAttribute('data-processed', 'true');
+                        if (pre.getAttribute('title')) {
+                            elem.setAttribute('title', pre.getAttribute('title'));
+                        }
+                        pre.parentElement.replaceChild(elem, pre);
                     }
-                    pre.parentElement.replaceChild(elem, pre);
                 }
                 mermaid.mermaidAPI.render('id' + i, e.textContent, replace);
             }

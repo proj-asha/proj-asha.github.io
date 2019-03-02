@@ -55,9 +55,7 @@ a {
 }
 .mermaid {
     border: 1px solid #FF80AB;
-    &[title]::before {
+    &[title]::before, summary {
         background: #FCE4EC;
-        content: attr(title);
-        display: block;
     }
 }
