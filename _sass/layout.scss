@@ -20,6 +20,10 @@ body {
     &>section {
         flex: 1 0 auto;
         padding: 0 1em;
+
+        img {
+            max-width: 100%;
+        }
     }
 }
 
