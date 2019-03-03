@@ -1,10 +1,17 @@
 ---
 ---
 
+{% assign documents = site.documents | sort: "date" | reverse %}
+
+<div class="cards">
+    {% include pages.html pages=documents %}
+</div>
+
 <ul>
-{% for page in site.pages %}
-{% if page.title %}
-<li><a href="{{ page.url }}">{{ page.title }}</a></li>
-{% endif %}
-{% endfor %}
+    {% for page in site.pages %}
+    {% if page.title %}
+    <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+    {% endif %}
+    {% endfor %}
 </ul>
+        

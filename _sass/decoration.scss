@@ -22,6 +22,44 @@ a {
     }
 }
 
+.card {
+    border: 1px solid #FF80AB;
+    position: relative;
+    box-shadow: 0 0.2em 0.5em rgba(0, 0, 0, 0.1);
+
+    h1 {
+        background: #FCE4EC;
+        border-bottom: 1px solid #FF80AB;
+    }
+
+    footer {
+        border-top: 1px solid #FF80AB;
+        color: #666666;
+    }
+
+    .excerpt {
+        color: #444444;
+    }
+
+    a {
+        color: inherit;
+        &:hover, &:focus {
+            text-decoration: none;
+
+            &:after {
+                position: absolute;
+                content: "";
+                display: block;
+                background-color: rgba(255, 255, 255, 0.5);
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+            }
+        }
+    }
+}
+
 .wrapper {
     &>header {
         background: #FCE4EC;

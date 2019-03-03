@@ -1,0 +1,25 @@
+{% assign date_format = site.date_format | default: "%b %-d, %Y" %}
+
+{% for p in include.pages %}
+<section class="card">
+<a href="{{ p.url }}">
+<h1>{{ p.title }}</h1>
+<p class="excerpt">
+    {% if p.description %}
+    {{ p.description | escape }}
+    {% else %}
+    {{ p.excerpt | strip_html }}
+    {% endif %}
+</p>
+<footer>
+    {{ p.date | date: date_format }}
+    {% for category in p.categories %}
+        <span class="badge category">{{ category }}</span>
+    {% endfor %}
+    {% for tag in p.tags %}
+        <span class="badge tag">{{ tag }}</span>
+    {% endfor %}
+</footer>
+</a>
+</section>
+{% endfor %}
