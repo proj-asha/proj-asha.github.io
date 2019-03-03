@@ -1,14 +1,11 @@
 title: "明日葉の自由帳"
-plugins:
-  - jekyll-feed
+author: "明日葉"
 markdown: kramdown
 highlighter: rouge
 
 collections:
   experiments:
     output: true
-
-excerpt_separator: <!--more-->
 
 defaults:
   - scope:

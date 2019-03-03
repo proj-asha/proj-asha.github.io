@@ -1,6 +1,7 @@
 <head>
     <meta charset="utf8" />
     <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+    <link href="{{ page.url | absolute_url }}" rel="canonical" />
     <link href="{{ '/assets/favicon.png' | relative_url }}" rel="icon" type="image/png" />
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">

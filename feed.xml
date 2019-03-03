@@ -1,0 +1,33 @@
+---
+layout: null
+---
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+{% assign date_format = "%Y-%m-%dT%H:%M:%S%:z" %}
+<generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
+<link href="{{ site.url }}/feed.xml" rel="self" type="application/atom+xml"/>
+<link href="{{ site.url }}/" rel="alternate" type="text/html"/>
+<updated>{{ site.time | date: date_format }}</updated>
+<id>{{ site.url }}/feed.xml</id>
+<title type="html">{{ site.title | escape }}</title>
+<subtitle>{{ site.title | escape }}</subtitle>
+{% assign documents = site.documents | sort: "date" | reverse %}
+{% for p in documents %}
+<enrty>
+    <title type="html">{{ p.title | escape }}</title>
+    <link href="{{ p.url | absolute_url }}" rel="alternate" type="text/html" title="{{ p.title | escape }}"/>
+    <published>{{ p.date | date: date_format }}</published>
+    <id>{{ p.id | absolute_url }}</id>
+    <content type="html" xml:base="{{ p.url | absolute_url }}">
+    <![CDATA[{{ p.content }}]]>
+    </content>
+    <author><name>{% if page.author %}{{ page.author }}{% else %}{{ site.author }}{% endif %}</name></author>
+    {% for category in p.categories %}
+    <category term="{{ category | escape }}"/>
+    {% endfor %}
+    <summary type="html">
+    <![CDATA[{% if p.description %}{{ p.description | escape }}{% else %}{{ p.excerpt | strip_html | truncate: 200 }}{% endif %}]]>
+    </summary>
+</enrty>
+{% endfor %}
+</feed>
