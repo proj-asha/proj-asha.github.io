@@ -22,6 +22,13 @@ a {
     }
 }
 
+summary {
+    cursor: pointer;
+    &:hover, &:focus {
+        color: #444444;
+    }
+}
+
 .card {
     border: 1px solid #FF80AB;
     position: relative;

@@ -13,6 +13,9 @@
 </p>
 <footer>
     {{ p.date | date: date_format }}
+    {% if p.closed_at %}
+    - {{ p.closed_at | date: date_format }}
+    {% endif %}
     {% for category in p.categories %}
         <span class="badge category">{{ category }}</span>
     {% endfor %}

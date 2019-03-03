@@ -1,0 +1,44 @@
+{% assign date_format = site.date_format | default: "%b %-d, %Y" %}
+{% assign documents = site.documents | sort: "date" | reverse %}
+{% assign max_count = include.max_count | default: 5 %}
+{% assign threshold = include.threshold | default: 2 %}
+{% assign count = 0 %}
+
+<ul>
+{% for p in documents %}
+    {% assign c = 0 %}
+    {% for category in page.categories %}
+        {% if p.url != page.url %}
+            {% if p.categories contains category %}
+                {% assign c = c | plus: 2 %}
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+    {% for tag in page.tags %}
+        {% if p.url != page.url %}
+            {% if p.tags contains tag %}
+                {% assign c = c | plus: 1 %}
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+    {% if c >= threshold %}
+        {% assign count = count | plus: 1 %}
+        <li>
+            <a href="{{ p.url | absolute_url }}">{{ p.title | escape }}</a>
+            [{{ p.date | date: date_format }}]
+            {% for category in p.categories %}
+            <span class="badge category">{{ category }}</span>
+            {% endfor %}
+            {% for tag in p.tags %}
+                <span class="badge tag">{{ tag }}</span>
+            {% endfor %}
+        </li>
+    {% endif %}
+    {% if count >= max_count %}
+        {% break %}
+    {% endif %}
+{% endfor %}
+{% if count == 0 %}
+    <li>関連ページはありません。</li>
+{% endif %}
+</ul>

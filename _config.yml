@@ -16,4 +16,9 @@ defaults:
       path: ""
       type: "experiments"
     values:
-      layout: experiment
+      layout: post
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: post
