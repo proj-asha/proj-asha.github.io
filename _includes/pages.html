@@ -8,7 +8,7 @@
     {% if p.description %}
     {{ p.description | escape }}
     {% else %}
-    {{ p.excerpt | strip_html }}
+    {{ p.excerpt | strip_html | truncate: 200 }}
     {% endif %}
 </p>
 <footer>

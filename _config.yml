@@ -8,6 +8,8 @@ collections:
   experiments:
     output: true
 
+excerpt_separator: <!--more-->
+
 defaults:
   - scope:
       path: ""
