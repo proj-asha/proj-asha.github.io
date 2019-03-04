@@ -1,0 +1,12 @@
+---
+title: 投稿
+permalink: /posts/
+---
+
+{% assign date_format = site.date_format | default: "%b %-d, %Y" %}
+
+{% assign posts = site.posts | sort: "date" | reverse %}
+
+<div class="cards">
+    {% include pages.html pages=posts %}
+</div>

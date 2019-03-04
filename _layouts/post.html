@@ -2,8 +2,21 @@
 layout: default
 ---
 
+{% assign date_format = site.date_format | default: "%b %-d, %Y" %}
+<nav>
+    [{{ page.date | date: date_format }}{% if page.closed_at %} — {{ page.closed_at | date: date_format }}{% endif %}] 
+    <a href="{{ page.collection | prepend: '/' | append: '/' | absolute_url }}">{{ page.collection }}</a>
+    {% for category in page.categories %}
+        <span class="badge category">{{ category }}</span>
+    {% endfor %}
+    {% for tag in page.tags %}
+        <span class="badge tag">{{ tag }}</span>
+    {% endfor %}
+</nav>
+
 {{ content }}
 
+<footer>
 <h1>関連</h1>
-
 {% include related.html %}
+</footer>

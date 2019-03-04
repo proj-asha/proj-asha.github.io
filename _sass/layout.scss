@@ -24,6 +24,14 @@ body {
         img {
             max-width: 100%;
         }
+
+        nav {
+            font-size: 0.8em;
+        }
+
+        h1 + nav {
+            margin-top: -1em;
+        }
     }
 }
 
