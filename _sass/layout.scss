@@ -37,6 +37,12 @@ body {
             margin: 1em 0;
             height: 1.7em;
         }
+
+        pre {
+            padding: 0.5em 1em;
+            overflow-x: auto;
+            line-height: 1.5em;
+        }
     }
 }
 
