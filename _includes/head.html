@@ -3,15 +3,18 @@
     <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="id" content="{{ page.id }}" />
+
     <link href="{{ page.url | absolute_url }}" rel="canonical" />
-    <link href="{{ '/assets/favicon.png' | relative_url }}" rel="icon" type="image/png" />
+    <link href="{{ '/assets/favicon.png' | absolute_url }}" rel="icon" type="image/png" />
+    <link href="{{ '/atom.xml' | absolute_url }}" rel="alternate" type="application/atom+xml" title="Atom"/>
+
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
-    <link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}" />
+    <link href="{{ '/assets/style.css' | absolute_url }}" rel="stylesheet" />
 
     <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-    <script src="{{ '/assets/mermaid.js' | relative_url }}"></script>
-    <script src="{{ '/assets/gdrive.js' | relative_url }}"></script>
+    <script src="{{ '/assets/mermaid.js' | absolute_url }}"></script>
+    <script src="{{ '/assets/gdrive.js' | absolute_url }}"></script>
 
     {% if jekyll.environment == 'production' %}
     <!-- Global site tag (gtag.js) - Google Analytics -->
