@@ -1,0 +1,25 @@
+---
+layout: xml
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"> 
+{% assign date_format = "%Y-%m-%d" %}
+{% for p in site.pages %}
+{% assign tail = p.url | slice: -1, 1 %}
+{% assign ext = p.url | slice: -5, 5 %}
+{% if tail == "/" or ext == ".html" %}
+<url>
+    <loc>{{ p.url | absolute_url }}</loc>
+    <lastmod>{% if p.closed_at %}{{ p.closed_at | date: date_format }}{% elsif p.date %}{{ p.date | date: date_format}}{% else %}{{ site.time | date: date_format }}{% endif %}</lastmod>
+    {% if p.changefreq %}<changefreq>{{ p.changefreq }}</changefreq>{% endif %}
+</url>
+{% endif %}
+{% endfor %}
+{% for p in site.documents %}
+<url>
+    <loc>{{ p.url | absolute_url }}</loc>
+    <lastmod>{% if p.closed_at %}{{ p.closed_at | date: date_format }}{% elsif p.date %}{{ p.date | date: date_format}}{% else %}{{ site.time | date: date_format }}{% endif %}</lastmod>
+    {% if p.changefreq %}<changefreq>{{ p.changefreq }}</changefreq>{% endif %}
+</url>
+{% endfor %}
+</urlset>
