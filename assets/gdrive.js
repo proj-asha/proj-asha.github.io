@@ -1,5 +1,5 @@
 const proc = function() {
-    const elements = document.querySelectorAll("img[data-gdrive]")
+    const elements = document.querySelectorAll("[data-gdrive]")
     for (const e of elements) {
         const gdrive = e.getAttribute('data-gdrive');
         e.removeAttribute('data-gdrive');
