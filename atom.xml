@@ -16,7 +16,7 @@ layout: null
 </author>
 {% assign documents = site.documents | sort: "date" | reverse %}
 {% for p in documents %}
-<enrty>
+<entry>
     <title type="html">{{ p.title | escape }}</title>
     <link href="{{ p.url | absolute_url }}" rel="alternate" type="text/html" title="{{ p.title | escape }}"/>
     <published>{{ p.date | date: date_format }}</published>
@@ -27,6 +27,6 @@ layout: null
     <category term="{{ category | escape }}"/>
     {% endfor %}
     <summary type="html">{% if p.description %}{{ p.description | escape }}{% else %}{{ p.excerpt | strip_html | truncate: 200 | escape }}{% endif %}</summary>
-</enrty>
+</entry>
 {% endfor %}
 </feed>
