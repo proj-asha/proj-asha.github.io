@@ -26,7 +26,7 @@ layout: null
     {% for category in p.categories %}
     <category term="{{ category | escape }}"/>
     {% endfor %}
-    <summary type="html">{% if p.description %}{{ p.description | escape }}{% else %}{{ p.excerpt | truncate: 200 | strip_html }}{% endif %}</summary>
+    <summary type="html">{% if p.description %}{{ p.description | escape }}{% else %}{{ p.excerpt | strip_html | truncate: 200 | escape }}{% endif %}</summary>
 </enrty>
 {% endfor %}
 </feed>
