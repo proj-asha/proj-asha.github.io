@@ -1,0 +1,15 @@
+{% assign p = include.page %}
+<a href="{{ p.url | absolute_url }}">{{ p.title | escape }}</a>
+[{{ p.date | date: date_format }}]
+<a href="{{ p.collection | prepend: '/' | append: '/' | absolute_url }}">{{ p.collection }}</a>
+{% for issue in p.issues %}
+    {% assign issue_id = issue | prepend: '/issues/' %}
+    {% for i in site.issues %}
+        {% if i.id == issue_id %}
+            <a href="{{ i.url | absolute_url }}" class="badge issue">{{ i.title }}</a>
+        {% endif %}
+    {% endfor %}
+{% endfor %}
+{% for tag in p.tags %}
+    <span class="badge tag">{{ tag }}</span>
+{% endfor %}

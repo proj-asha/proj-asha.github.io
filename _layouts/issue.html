@@ -1,0 +1,55 @@
+---
+layout: default
+---
+
+{% assign date_format = site.date_format | default: "%b %-d, %Y" %}
+<nav>
+    [{{ page.date | date: date_format }}{% if page.closed_at %} — {{ page.closed_at | date: date_format }}{% endif %}] 
+    <a href="{{ page.collection | prepend: '/' | append: '/' | absolute_url }}">{{ page.collection }}</a>
+    {% for issue in page.issues %}
+        {% assign issue_id = issue | prepend: '/issues/' %}
+        {% for i in site.issues %}
+            {% if i.id == issue_id %}
+                <a href="{{ i.url | absolute_url }}" class="badge issue">{{ i.title }}</a>
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+    {% for tag in page.tags %}
+        <span class="badge tag">{{ tag }}</span>
+    {% endfor %}
+</nav>
+
+{{ content }}
+
+{% assign issue_id = page.id | remove_first: '/issues/' %}
+<footer>
+<h1>関連</h1>
+{% assign count = 0 %}
+{% assign issues = site.issues | sort: "date" | reverse %}
+{% for issue in issues %}
+    {% if issue.issues contains issue_id %}
+        {% if count == 0 %}
+            <ul>
+        {% endif %}
+        {% assign count = count | plus: 1 %}
+        <li>{% include related_entry.html page=issue %}</li>
+    {% endif %}
+{% endfor %}
+{% if count > 0 %}
+    </ul>
+{% endif %}
+
+{% assign documents = site.documents | sort: "date" | reverse %}
+<ul>
+{% for p in documents %}
+    {% assign issue_id = page.id | remove_first: '/issues/' %}
+    {% if p.issues contains issue_id and p.collection != 'issues' %}
+        {% assign count = count | plus: 1 %}
+        <li>{% include related_entry.html page=p %}</li>
+    {% endif %}
+{% endfor %}
+{% if count == 0 %}
+    <li>関連ページはありません。</li>
+{% endif %}
+</ul>
+</footer>

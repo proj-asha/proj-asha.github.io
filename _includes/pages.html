@@ -16,8 +16,13 @@
     {% if p.closed_at %}
     — {{ p.closed_at | date: date_format }}
     {% endif %}
-    {% for category in p.categories %}
-        <span class="badge category">{{ category }}</span>
+    {% for issue in p.issues %}
+        {% assign issue_id = issue | prepend: '/issues/' %}
+        {% for i in site.issues %}
+            {% if i.id == issue_id %}
+                <span class="badge issue">{{ i.title }}</span>
+            {% endif %}
+        {% endfor %}
     {% endfor %}
     {% for tag in p.tags %}
         <span class="badge tag">{{ tag }}</span>

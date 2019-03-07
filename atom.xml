@@ -23,9 +23,6 @@ layout: null
     <id>{{ p.id | absolute_url }}</id>
     <content type="html" xml:base="{{ p.url | absolute_url }}">{{ p.content | escape }}</content>
     {% if page.author %}<author><name>{{ page.author }}</name></author>{% endif %}
-    {% for category in p.categories %}
-    <category term="{{ category | escape }}"/>
-    {% endfor %}
     <summary type="html">{% if p.description %}{{ p.description | escape }}{% else %}{{ p.excerpt | strip_html | truncate: 200 | escape }}{% endif %}</summary>
 </entry>
 {% endfor %}

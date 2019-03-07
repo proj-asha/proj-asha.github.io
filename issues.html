@@ -1,0 +1,12 @@
+---
+title: Issues
+permalink: /issues/
+---
+
+{% assign date_format = site.date_format | default: "%b %-d, %Y" %}
+
+{% assign issues = site.issues | sort: "date" | reverse %}
+
+<div class="cards">
+    {% include pages.html pages=issues %}
+</div>

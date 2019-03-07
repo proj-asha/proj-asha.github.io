@@ -6,6 +6,8 @@ highlighter: rouge
 collections:
   experiments:
     output: true
+  issues:
+    output: true
 
 defaults:
   - scope:
@@ -17,6 +19,11 @@ defaults:
       type: "experiments"
     values:
       layout: post
+  - scope:
+      path: ""
+      type: "issues"
+    values:
+      layout: issue
   - scope:
       path: ""
       type: "posts"
