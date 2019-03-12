@@ -2,6 +2,7 @@ title: "明日葉の自由帳"
 author: "明日葉"
 markdown: kramdown
 highlighter: rouge
+timezone: Asia/Tokyo
 
 collections:
   experiments:
