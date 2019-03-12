@@ -1,0 +1,5 @@
+<a href="
+{%- for doc in site.documents -%}
+{%- if doc.id == include.id -%}{{ doc.url | absolute_url }}{%- assign d = doc -%}{%- endif -%}
+{%- endfor -%}
+"{% if include.text or d.title %} title="{{ include.title | default: d.title }}"{% endif %}>{{ include.text | default: d.title }}</a>
