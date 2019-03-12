@@ -4,19 +4,7 @@ layout: default
 
 {% assign date_format = site.date_format | default: "%b %-d, %Y" %}
 <nav>
-    [{{ page.date | date: date_format }}{% if page.closed_at %} — {{ page.closed_at | date: date_format }}{% endif %}] 
-    <a href="{{ page.collection | prepend: '/' | append: '/' | absolute_url }}">{{ page.collection }}</a>
-    {% for issue in page.issues %}
-        {% assign issue_id = issue | prepend: '/issues/' %}
-        {% for i in site.issues %}
-            {% if i.id == issue_id %}
-                <a href="{{ i.url | absolute_url }}" class="badge issue">{{ i.title }}</a>
-            {% endif %}
-        {% endfor %}
-    {% endfor %}
-    {% for tag in page.tags %}
-        <span class="badge tag">{{ tag }}</span>
-    {% endfor %}
+    {% include post-nav.html %}
 </nav>
 
 {{ content }}

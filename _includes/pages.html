@@ -5,28 +5,28 @@
 <a href="{{ p.url }}">
 <h1>{{ p.title }}</h1>
 <p class="excerpt">
-    {% if p.description %}
+    {%- if p.description -%}
     {{ p.description | escape }}
-    {% else %}
+    {%- else -%}
     {{ p.excerpt | strip_html | truncate: 200 }}
-    {% endif %}
+    {%- endif -%}
 </p>
 <footer>
     {{ p.date | date: date_format }}
-    {% if p.closed_at %}
-    — {{ p.closed_at | date: date_format }}
-    {% endif %}
-    {% for issue in p.issues %}
-        {% assign issue_id = issue | prepend: '/issues/' %}
-        {% for i in site.issues %}
-            {% if i.id == issue_id %}
-                <span class="badge issue">{{ i.title }}</span>
-            {% endif %}
-        {% endfor %}
-    {% endfor %}
-    {% for tag in p.tags %}
-        <span class="badge tag">{{ tag }}</span>
-    {% endfor %}
+    {%- if p.closed_at -%}
+    &#x20;&mdash; {{ p.closed_at | date: date_format }}
+    {%- endif -%}
+    {%- for issue in p.issues -%}
+        {%- assign issue_id = issue | prepend: '/issues/' -%}
+        {%- for i in site.issues -%}
+            {%- if i.id == issue_id -%}
+                &#x20;<span class="badge issue">{{ i.title }}</span>
+            {%- endif -%}
+        {%- endfor -%}
+    {%- endfor -%}
+    {%- for tag in p.tags -%}
+        &#x20;<span class="badge tag">{{ tag }}</span>
+    {%- endfor -%}
 </footer>
 </a>
 </section>

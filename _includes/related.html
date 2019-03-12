@@ -1,28 +1,27 @@
-{% assign date_format = site.date_format | default: "%b %-d, %Y" %}
-{% assign documents = site.documents | sort: "date" | reverse %}
-{% assign max_count = include.max_count | default: 5 %}
-{% assign threshold = include.threshold | default: 1 %}
-{% assign count = 0 %}
-
+{%- assign date_format = site.date_format | default: "%b %-d, %Y" %}
+{%- assign documents = site.documents | sort: "date" | reverse %}
+{%- assign max_count = include.max_count | default: 5 %}
+{%- assign threshold = include.threshold | default: 1 %}
+{%- assign count = 0 %}
 <ul>
-{% for p in documents %}
-    {% assign c = 0 %}
-    {% for issue in page.issues %}
-        {% if p.url != page.url %}
-            {% if p.issues contains issue %}
-                {% assign c = c | plus: 1 %}
-            {% endif %}
-        {% endif %}
-    {% endfor %}
-    {% if c >= threshold %}
-        {% assign count = count | plus: 1 %}
+{%- for p in documents -%}
+    {%- assign c = 0 -%}
+    {%- for issue in page.issues -%}
+        {%- if p.url != page.url %}
+            {%- if p.issues contains issue %}
+                {%- assign c = c | plus: 1 %}
+            {%- endif %}
+        {%- endif %}
+    {%- endfor %}
+    {%- if c >= threshold %}
+        {%- assign count = count | plus: 1 %}
         <li>{% include related_entry.html page=p %}</li>
-    {% endif %}
-    {% if count >= max_count %}
-        {% break %}
-    {% endif %}
-{% endfor %}
-{% if count == 0 %}
+    {%- endif %}
+    {%- if count >= max_count %}
+        {%- break %}
+    {%- endif %}
+{%- endfor %}
+{%- if count == 0 %}
     <li>関連ページはありません。</li>
-{% endif %}
+{%- endif %}
 </ul>
