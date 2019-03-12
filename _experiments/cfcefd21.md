@@ -1,6 +1,7 @@
 ---
 title: 実験記録 cfcefd21
 date: 2019-03-12
+closed_at: 2019-03-13
 issues: ['module/vox']
 tags: ['closed', 'satisfied']
 ---
