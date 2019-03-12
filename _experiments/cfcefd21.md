@@ -2,7 +2,7 @@
 title: 実験記録 cfcefd21
 date: 2019-03-12
 issues: ['module/vox']
-tags: ['open']
+tags: ['closed', 'satisfied']
 ---
 
 {% include link id='/experiments/9ada9179' text='現在のモデル' %}では、VRAM 不足により、minibatch size を2のような小さい値[^1]にしなければ学習できない。
@@ -134,9 +134,16 @@ upsamp4 --> output
 
     *   減衰: 100 epoch 毎に 10<sup>-0.5</sup> 倍。
 
-*   minibatch size: 2
+*   minibatch size: 5
 
 *   epoch: 1000
+
+## 結果 ##
+
+学習時間: 10.07 時間
+
+minibatch size を 5 まで増やすことができ、学習時間を<sup>2</sup>/<sub>5</sub>～<sup>１</sup>/<sub>2</sub>程度まで減らすことができた。
+
 
 # 脚注 #
 
