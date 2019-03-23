@@ -6,7 +6,7 @@ category: ['note']
 
 [mermaid](https://mermaidjs.github.io/) は、フローチャート、シーケンス図、ガントチャートをテキストで記述し、SVG に変換するソフトウェア。類似プロダクトの PlantUML と異なり、全てブラウザ上で動作する。
 
-しかし、jekyll や GitBook のためのプラグインは用意されているが、GitHub Pages では許可されたもの以外の jekyll plugin が使用できない。
+jekyll や GitBook のためのプラグインは用意されているが、GitHub Pages では許可されたもの以外の jekyll plugin が使用できない。
 
 ここでは、markdown 内に記述され、html の code 要素として出力された mermaid を、 SVG へ変換し埋め込む JavaScript スニペットを示す。これにより、 jekyll theme への変更によって GitHub Pages 等でも mermaid が使用できる。
 
