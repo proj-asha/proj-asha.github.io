@@ -11,3 +11,6 @@
 {%- for tag in page.tags -%}
     &#x20;<span class="badge tag">{{ tag }}</span>
 {%- endfor -%}
+{%- for gist in page.gist -%}
+    &#x20;<a href="{{ gist }}" title="Gist">{% octicon gist %}</a>
+{%- endfor -%}
