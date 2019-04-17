@@ -39,7 +39,9 @@ body {
         padding: 0 1em;
 
         img {
+            box-sizing: border-box;
             max-width: 100%;
+            height: auto;
         }
 
         nav {
