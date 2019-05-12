@@ -124,3 +124,8 @@ code {
         padding: 0.5em;
     }
 }
+
+a.footnote::before {
+    content: '*';
+    display: inline;
+}
